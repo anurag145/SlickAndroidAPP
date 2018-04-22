@@ -21,7 +21,9 @@ public class EstimoteCloudBeaconDetailsFactory implements BeaconContentFactory {
             @Override
             public void success(BeaconInfo beaconInfo) {
                 callback.onContentReady(new EstimoteCloudBeaconDetails(
-                        beaconInfo.name, beaconInfo.color));
+                        beaconInfo.name, beaconInfo.color,beaconInfo.batteryLifeExpectancyInDays,beaconInfo.macAddress));
+
+
             }
 
             @Override
@@ -31,7 +33,7 @@ public class EstimoteCloudBeaconDetailsFactory implements BeaconContentFactory {
                         + "token provided in the MyApplication are correct, and if the beacon with "
                         + "such ID is assigned to your Estimote Account. The error was: "
                         + e.toString());
-                callback.onContentReady(new EstimoteCloudBeaconDetails("beacon", Color.UNKNOWN));
+                callback.onContentReady(new EstimoteCloudBeaconDetails("beacon", Color.UNKNOWN,0,null));
             }
         });
     }
